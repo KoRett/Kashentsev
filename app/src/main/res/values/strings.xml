@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Kashentsev</string>
+    <string name="popular">Популярные</string>
+    <string name="retry">Повторить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movie_image">Movie Image</string>
+    <string name="genres"><b>Жанры:</b> </string>
+    <string name="countries"><b>Страны:</b> </string>
+</resources>

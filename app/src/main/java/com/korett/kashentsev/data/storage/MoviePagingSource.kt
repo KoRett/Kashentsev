@@ -1,0 +1,38 @@
+package com.korett.kashentsev.data.storage
+
+import android.util.Log
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.korett.kashentsev.domain.model.MoviePreview
+import com.korett.kashentsev.presentation.popular.adapter.MovieViewHolder
+import retrofit2.HttpException
+import java.io.IOException
+
+private const val STARTING_PAGE_INDEX = 1
+
+class MoviePagingSource(private val kinopoiskAPI: KinopoiskAPI) :
+    PagingSource<Int, MoviePreview>() {
+    override fun getRefreshKey(state: PagingState<Int, MoviePreview>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
+    }
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MoviePreview> {
+        val page = params.key ?: STARTING_PAGE_INDEX
+        return try {
+            val response = kinopoiskAPI.getPopularMovies(page)
+            LoadResult.Page(
+                data = response.body()!!.films.map { it.toDomain() },
+                prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
+                nextKey = if (page < response.body()!!.pagesCount) page + 1 else null
+            )
+        } catch (e: IOException) {
+            return LoadResult.Error(e)
+        } catch (e: HttpException) {
+            return LoadResult.Error(e)
+        }
+
+    }
+}
