@@ -2,7 +2,6 @@ package com.korett.kashentsev.presentation.popular
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,7 @@ import androidx.paging.LoadState
 import androidx.paging.map
 import com.korett.kashentsev.app.App
 import com.korett.kashentsev.databinding.FragmentPopularMoviesBinding
-import com.korett.kashentsev.presentation.popular.adapter.MovieViewHolder
 import com.korett.kashentsev.presentation.popular.adapter.MoviesAdapter
-import com.korett.kashentsev.presentation.popular.info.MovieInfoFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch

@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.korett.kashentsev.app.App
 import com.korett.kashentsev.databinding.FragmentFavouriteMoviesBinding
 import com.korett.kashentsev.domain.model.ErrorResultModel
-import com.korett.kashentsev.domain.model.Movie
 import com.korett.kashentsev.domain.model.MoviePreview
 import com.korett.kashentsev.domain.model.PendingResultModel
 import com.korett.kashentsev.domain.model.SuccessResultModel

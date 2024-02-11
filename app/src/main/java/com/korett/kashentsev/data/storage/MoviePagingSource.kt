@@ -1,11 +1,8 @@
 package com.korett.kashentsev.data.storage
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.korett.kashentsev.data.storage.database.dao.MoviePreviewDao
 import com.korett.kashentsev.domain.model.MoviePreview
-import com.korett.kashentsev.presentation.popular.adapter.MovieViewHolder
 import retrofit2.HttpException
 import java.io.IOException
 

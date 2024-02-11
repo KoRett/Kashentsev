@@ -1,19 +1,10 @@
 package com.korett.kashentsev.presentation
 
-import android.app.ActionBar
-import android.app.DirectAction
-import android.graphics.Color
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout.Directions
-import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.navOptions
 import androidx.navigation.ui.setupWithNavController
 import com.korett.kashentsev.MainGraphDirections
 import com.korett.kashentsev.R
