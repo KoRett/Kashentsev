@@ -1,4 +1,4 @@
-package com.korett.kashentsev.presentation.popular.adapter
+package com.korett.kashentsev.presentation.favourite.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -15,19 +15,8 @@ class MovieViewHolder(private val binding: MovieItemBinding) :
 
     @SuppressLint("SetTextI18n")
     fun bind(
-        item: MoviePreview,
-        onItemClick: ((movieId: Int) -> Unit),
-        onItemLongClick: ((moviePreview: MoviePreview, isFavourite: Boolean) -> Unit)
+        item: MoviePreview
     ) {
-        binding.root.setOnClickListener {
-            onItemClick(item.movieId)
-        }
-        binding.root.setOnLongClickListener {
-            item.isFavourite = !item.isFavourite
-            onItemLongClick(item, item.isFavourite)
-            binding.imFavourite.visibility = if (item.isFavourite) View.VISIBLE else View.INVISIBLE
-            return@setOnLongClickListener true
-        }
         Glide.with(binding.root.context)
             .load(item.posterUrlPreview)
             .transition(DrawableTransitionOptions.withCrossFade())

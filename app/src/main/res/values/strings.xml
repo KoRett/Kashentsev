@@ -7,4 +7,5 @@
     <string name="movie_image">Movie Image</string>
     <string name="genres"><b>Жанры:</b> </string>
     <string name="countries"><b>Страны:</b> </string>
+    <string name="favourite">Избранное</string>
 </resources>

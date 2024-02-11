@@ -20,6 +20,7 @@ glide = "4.15.1"
 livedata-ktx = "2.7.0"
 navigation-fragment-ktx = "2.7.6"
 navigation-ui-ktx = "2.7.6"
+room = "2.6.1"
 
 [libraries]
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging-runtime" }
@@ -43,9 +44,13 @@ lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-lived
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofitConverter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okkhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 okkhttp3LogingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidx-navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigation-fragment-ktx" }
+room = { id = "androidx.room", version.ref = "room" }

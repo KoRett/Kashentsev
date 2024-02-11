@@ -5,5 +5,6 @@ data class MoviePreview(
     val title: String?,
     val posterUrlPreview: String,
     val year: Int,
-    val genres: List<String>
+    val genre: String,
+    var isFavourite: Boolean
 )

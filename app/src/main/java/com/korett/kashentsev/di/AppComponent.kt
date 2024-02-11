@@ -1,6 +1,7 @@
 package com.korett.kashentsev.di
 
 import android.content.Context
+import com.korett.kashentsev.presentation.favourite.FavouriteMoviesFragment
 import com.korett.kashentsev.presentation.popular.PopularMoviesFragment
 import com.korett.kashentsev.presentation.popular.info.MovieInfoFragment
 import dagger.BindsInstance
@@ -18,6 +19,7 @@ interface AppComponent {
 
     fun inject(popularMoviesFragment: PopularMoviesFragment)
     fun inject(popularMoviesFragment: MovieInfoFragment)
+    fun inject(favouriteMoviesFragment: FavouriteMoviesFragment)
 
     @Component.Builder
     interface Builder {

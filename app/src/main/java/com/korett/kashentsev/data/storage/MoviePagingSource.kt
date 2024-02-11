@@ -3,6 +3,7 @@ package com.korett.kashentsev.data.storage
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.korett.kashentsev.data.storage.database.dao.MoviePreviewDao
 import com.korett.kashentsev.domain.model.MoviePreview
 import com.korett.kashentsev.presentation.popular.adapter.MovieViewHolder
 import retrofit2.HttpException
@@ -10,7 +11,10 @@ import java.io.IOException
 
 private const val STARTING_PAGE_INDEX = 1
 
-class MoviePagingSource(private val kinopoiskAPI: KinopoiskAPI) :
+class MoviePagingSource(
+    private val kinopoiskAPI: KinopoiskAPI,
+    private val favouriteMovieId: List<Int>
+) :
     PagingSource<Int, MoviePreview>() {
     override fun getRefreshKey(state: PagingState<Int, MoviePreview>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -23,8 +27,9 @@ class MoviePagingSource(private val kinopoiskAPI: KinopoiskAPI) :
         val page = params.key ?: STARTING_PAGE_INDEX
         return try {
             val response = kinopoiskAPI.getPopularMovies(page)
+            val moviePreviews = response.body()!!.films
             LoadResult.Page(
-                data = response.body()!!.films.map { it.toDomain() },
+                data = moviePreviews.map { it.toDomain(it.filmId in favouriteMovieId) },
                 prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
                 nextKey = if (page < response.body()!!.pagesCount) page + 1 else null
             )

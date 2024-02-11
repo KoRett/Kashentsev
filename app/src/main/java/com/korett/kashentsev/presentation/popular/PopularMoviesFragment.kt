@@ -2,6 +2,7 @@ package com.korett.kashentsev.presentation.popular
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +12,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import androidx.paging.map
 import com.korett.kashentsev.app.App
 import com.korett.kashentsev.databinding.FragmentPopularMoviesBinding
+import com.korett.kashentsev.presentation.popular.adapter.MovieViewHolder
 import com.korett.kashentsev.presentation.popular.adapter.MoviesAdapter
 import com.korett.kashentsev.presentation.popular.info.MovieInfoFragment
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
@@ -41,8 +45,17 @@ class PopularMoviesFragment : Fragment() {
         _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
 
         val adapter = MoviesAdapter(onItemClick = { movieId ->
-            val destination = PopularMoviesFragmentDirections.actionTopMoviesFragmentToMovieInfoFragment(movieId)
+            val destination =
+                PopularMoviesFragmentDirections.actionTopMoviesFragmentToMovieInfoFragment(movieId)
             findNavController().navigate(destination)
+        }, onItemLongClick = { moviePreview, isFavourite ->
+            vm.mutableMoviePreviews.update { pagingData ->
+                pagingData.map { if (it.movieId == moviePreview.movieId) it.apply { this.isFavourite = isFavourite } else it }
+            }
+            if (isFavourite)
+                vm.saveMoviePreviewToFavourite(moviePreview)
+            else
+                vm.removeMovieFromFavourite(moviePreview)
         })
 
         adapter.addLoadStateListener { loadState ->
@@ -53,7 +66,7 @@ class PopularMoviesFragment : Fragment() {
         binding.moviesList.adapter = adapter
 
         lifecycleScope.launch {
-            vm.movies.collectLatest {
+            vm.moviePreviews.collectLatest {
                 adapter.submitData(it)
             }
         }
@@ -63,12 +76,6 @@ class PopularMoviesFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
     }
 
 }

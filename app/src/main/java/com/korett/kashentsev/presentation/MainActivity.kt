@@ -1,15 +1,21 @@
 package com.korett.kashentsev.presentation
 
+import android.app.ActionBar
+import android.app.DirectAction
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Layout.Directions
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.navigation.ui.setupWithNavController
+import com.korett.kashentsev.MainGraphDirections
 import com.korett.kashentsev.R
 import com.korett.kashentsev.databinding.ActivityMainBinding
 
@@ -20,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
@@ -33,5 +38,19 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.tbMain.setupWithNavController(navController)
+
+        binding.btPopular.setOnClickListener {
+            val action = MainGraphDirections.actionGlobalTopMoviesFragment()
+            navController.navigate(
+                action
+            )
+        }
+
+        binding.btFavourite.setOnClickListener {
+            val action = MainGraphDirections.actionGlobalFavouriteMoviesFragment()
+            navController.navigate(
+                action
+            )
+        }
     }
 }

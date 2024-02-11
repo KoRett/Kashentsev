@@ -9,7 +9,7 @@
         android:id="@+id/topMoviesFragment"
         android:name="com.korett.kashentsev.presentation.popular.PopularMoviesFragment"
         android:label="@string/popular"
-        tools:layout="@layout/fragment_popular_movies" >
+        tools:layout="@layout/fragment_popular_movies">
         <action
             android:id="@+id/action_topMoviesFragment_to_movieInfoFragment"
             app:destination="@id/movieInfoFragment"
@@ -22,10 +22,29 @@
         android:id="@+id/movieInfoFragment"
         android:name="com.korett.kashentsev.presentation.popular.info.MovieInfoFragment"
         android:label=" "
-        tools:layout="@layout/fragment_movie_info" >
+        tools:layout="@layout/fragment_movie_info">
         <argument
             android:name="movieId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/favouriteMoviesFragment"
+        android:name="com.korett.kashentsev.presentation.favourite.FavouriteMoviesFragment"
+        android:label="@string/favourite"
+        tools:layout="@layout/fragment_favourite_movies"/>
+    <action
+        android:id="@+id/action_global_favouriteMoviesFragment"
+        app:destination="@id/favouriteMoviesFragment"
+        app:enterAnim="@anim/fade_in"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/fade_out" />
+    <action
+        android:id="@+id/action_global_topMoviesFragment"
+        app:destination="@id/topMoviesFragment"
+        app:enterAnim="@anim/fade_in"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/fade_out" />
 
 </navigation>

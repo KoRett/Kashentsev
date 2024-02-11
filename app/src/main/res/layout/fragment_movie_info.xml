@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.popular.info.MovieInfoFragment">
 
     <ScrollView
@@ -26,9 +27,9 @@
                 android:id="@+id/text_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
@@ -63,10 +64,9 @@
                 android:id="@+id/text_genres_all"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@id/text_genres"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="@id/text_info"
                 app:layout_constraintStart_toEndOf="@id/text_genres"
                 app:layout_constraintTop_toTopOf="@id/text_genres" />
 
@@ -75,22 +75,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
                 android:text="@string/countries"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/text_genres"
+                app:layout_constraintEnd_toStartOf="@id/text_countries_all"
                 app:layout_constraintStart_toStartOf="@id/text_genres"
-                app:layout_constraintTop_toBottomOf="@id/text_genres" />
+                app:layout_constraintTop_toBottomOf="@id/text_genres_all" />
 
             <TextView
                 android:id="@+id/text_countries_all"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="30dp"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@id/text_countries"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/text_genres_all"
                 app:layout_constraintStart_toEndOf="@id/text_countries"
                 app:layout_constraintTop_toTopOf="@id/text_countries" />
         </androidx.constraintlayout.widget.ConstraintLayout>
