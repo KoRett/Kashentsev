@@ -37,14 +37,20 @@
         app:destination="@id/favouriteMoviesFragment"
         app:enterAnim="@anim/fade_in"
         app:exitAnim="@anim/fade_out"
+        app:launchSingleTop="true"
         app:popEnterAnim="@anim/fade_in"
-        app:popExitAnim="@anim/fade_out" />
+        app:popExitAnim="@anim/fade_out"
+        app:popUpTo="@id/topMoviesFragment"
+        app:popUpToInclusive="true" />
     <action
         android:id="@+id/action_global_topMoviesFragment"
         app:destination="@id/topMoviesFragment"
         app:enterAnim="@anim/fade_in"
         app:exitAnim="@anim/fade_out"
+        app:launchSingleTop="true"
         app:popEnterAnim="@anim/fade_in"
-        app:popExitAnim="@anim/fade_out" />
+        app:popExitAnim="@anim/fade_out"
+        app:popUpTo="@id/favouriteMoviesFragment"
+        app:popUpToInclusive="true" />
 
 </navigation>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.korett.kashentsev.MainGraphDirections
 import com.korett.kashentsev.R
@@ -27,8 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
+
         val navController = navHostFragment.navController
-        binding.tbMain.setupWithNavController(navController)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.topMoviesFragment, R.id.favouriteMoviesFragment))
+        binding.tbMain.setupWithNavController(navController, appBarConfiguration)
 
         binding.btPopular.setOnClickListener {
             val action = MainGraphDirections.actionGlobalTopMoviesFragment()
